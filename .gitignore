@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# Secrets / OAuth
+token.json
+credentials.json
+
+# Local data
+*.log
+data/
+history.json
+
+# IDE / editor files
+.idea/
+.vscode/
+*.swp

@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="card">
+  <h2 style="margin-top:0;">{{ mode }} results</h2>
+  <span class="pill">Found: {{ run.found }}</span>
+  <span class="pill">Classified: {{ run.classified }}</span>
+  <span class="pill">Skipped: {{ run.skipped }}</span>
+  <span class="pill">Applied: {{ run.applied }}</span>
+</div>
+
+{% for r in run.results %}
+  <div class="card">
+    <div>
+      <strong>{{ r.category }}</strong>
+      <span class="pill">{{ r.reason }}</span>
+    </div>
+    <div class="msg">{{ r.summary }}</div>
+    <div class="msg">
+      Action → label: <code>{{ r.action.label }}</code>,
+      archive: <code>{{ r.action.archive }}</code>
+    </div>
+  </div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="card">
+  <h2 style="margin-top:0;">Run FilterFox</h2>
+
+  <form method="post" action="/preview">
+    <label>Gmail Query</label>
+    <input name="gmail_query" value="{{ defaults.gmail_query }}" />
+    <div class="msg">Example: <code>newer_than:30d in:inbox</code></div>
+
+    <label>Max Emails</label>
+    <input name="max_results" value="{{ defaults.max_results }}" />
+
+    <label>Label Prefix</label>
+    <input name="label_prefix" value="{{ defaults.label_prefix }}" />
+
+    <div style="margin-top:14px;">
+      <button type="submit" class="preview">Preview (Dry Run)</button>
+    </div>
+  </form>
+
+  <form method="post" action="/apply" style="margin-top:10px;">
+    <input type="hidden" name="gmail_query" value="{{ defaults.gmail_query }}" />
+    <input type="hidden" name="max_results" value="{{ defaults.max_results }}" />
+    <input type="hidden" name="label_prefix" value="{{ defaults.label_prefix }}" />
+    <button type="submit" class="apply" onclick="return confirm('Apply changes to Gmail? This will label/archive emails based on rules.')">Apply changes</button>
+  </form>
+</div>
+{% endblock %}
